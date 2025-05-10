@@ -85,6 +85,11 @@
       display: none;
     }
 
+    /* Chart Section Styling */
+    #chart-section {
+      display: none;
+    }
+
     /* Responsive Styling */
     @media (max-width: 768px) {
       iframe {
@@ -116,9 +121,18 @@
 
   <div class="container">
     <h1 id="main-title">May 2025 Data</h1>
+
     <!-- Data Section (Visible by Default) -->
     <div id="data-section" class="iframe-container">
       <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false"
+        height="600" allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Chart Section (Hidden by Default) -->
+    <div id="chart-section" class="iframe-container">
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubchart?oid=1234567890&format=interactive"
         height="600" allowfullscreen>
       </iframe>
     </div>
@@ -135,20 +149,28 @@
     function showSection(section) {
       const dataSection = document.getElementById('data-section');
       const formSection = document.getElementById('form-section');
+      const chartSection = document.getElementById('chart-section');
       const title = document.getElementById('main-title');
 
+      // Show form section
       if (section === 'form') {
         formSection.style.display = 'block';
         dataSection.style.display = 'none';
+        chartSection.style.display = 'none';
         title.textContent = 'New Entry Form';
-      } else if (section === 'data') {
+      }
+      // Show data section
+      else if (section === 'data') {
+        dataSection.style.display = 'none';
+        formSection.style.display = 'none';
+        chartSection.style.display = 'block';
+        title.textContent = 'Data Chart';
+      }
+      // Show home content (this can be adjusted to show a welcome message)
+      else {
         dataSection.style.display = 'block';
         formSection.style.display = 'none';
-        title.textContent = 'May 2025 Data';
-      } else {
-        // Show home content (this can be adjusted to show a welcome message)
-        dataSection.style.display = 'block';
-        formSection.style.display = 'none';
+        chartSection.style.display = 'none';
         title.textContent = 'May 2025 Data';
       }
     }
