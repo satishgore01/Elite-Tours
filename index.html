@@ -93,7 +93,7 @@
       display: none;
     }
 
-    #chart-section {
+    #data-section {
       display: none;
     }
 
@@ -135,14 +135,6 @@
       </iframe>
     </div>
 
-    <!-- Chart Section (Hidden by Default) -->
-    <div id="chart-section" class="iframe-container">
-      <iframe
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubchart?oid=1234567890&format=interactive"
-        height="600" allowfullscreen>
-      </iframe>
-    </div>
-
     <!-- Form Section (Hidden by Default) -->
     <div id="form-section" class="iframe-container">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfETKqWhKMq1essht5R7SbaXtX4ZFCaoxLO40YEe5GaAcvm4g/viewform?embedded=true"
@@ -155,24 +147,26 @@
     function showSection(section) {
       const dataSection = document.getElementById('data-section');
       const formSection = document.getElementById('form-section');
-      const chartSection = document.getElementById('chart-section');
       const title = document.getElementById('main-title');
 
-      // Show form section
+      // Hide both sections first
+      dataSection.style.display = 'none';
+      formSection.style.display = 'none';
+
+      // Show the section based on the button clicked
       if (section === 'form') {
         formSection.style.display = 'block';
-        dataSection.style.display = 'none';
-        chartSection.style.display = 'none';
         title.textContent = 'New Entry Form';
-      }
-      // Show data section
-      else if (section === 'data') {
-        dataSection.style.display = 'none';
-        formSection.style.display = 'none';
-        chartSection.style.display = 'block';
-        title.textContent = 'Data Chart';
+      } else if (section === 'data') {
+        dataSection.style.display = 'block';
+        title.textContent = 'May 2025 Data';
       }
     }
+
+    // By default, show the data section when the page loads
+    window.onload = function() {
+      showSection('data');
+    };
   </script>
 
 </body>
