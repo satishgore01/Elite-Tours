@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live Google Sheet Chart & Data</title>
+  <title>Elite-Tours</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,6 +11,34 @@
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .site-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007BFF;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #007BFF;
     }
 
     h1 {
@@ -43,9 +71,16 @@
 </head>
 <body>
 
-  <h1>Live Google Sheet Chart & Table</h1>
+  <header>
+    <div class="site-name">Elite-Tours</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">New</a>
+      <a href="#">Data</a>
+    </nav>
+  </header>
 
-  
+  <h1>May 2025 Data</h1>
 
   <!-- Google Sheet Table -->
   <div class="iframe-container">
@@ -55,7 +90,6 @@
       allowfullscreen>
     </iframe>
   </div>
-
 
 </body>
 </html>
