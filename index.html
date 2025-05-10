@@ -1,59 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elite-Tours</title>
   <style>
+    /* General Styles */
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
       color: #333;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-      padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-
-    .site-name {
-      font-size: 24px;
-      font-weight: bold;
-      color: #007BFF;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      color: #007BFF;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .site-name {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 10px 20px;
+      background-color: #0056b3;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #003d7a;
+    }
+
+    /* Container for Content */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .iframe-container {
       width: 100%;
-      max-width: 100%;
-      margin: 0 auto 40px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      background: white;
+      margin-bottom: 30px;
       border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: #fff;
       overflow: hidden;
     }
 
@@ -63,17 +80,29 @@
       display: block;
     }
 
+    /* Section Styling */
     #form-section {
       display: none;
     }
 
+    /* Responsive Styling */
     @media (max-width: 768px) {
       iframe {
-        height: 400px !important;
+        height: 400px;
+      }
+
+      nav a {
+        font-size: 1rem;
+        margin: 0 10px;
+      }
+
+      .container {
+        width: 95%;
       }
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -85,47 +114,47 @@
     </nav>
   </header>
 
-  <h1 id="main-title">May 2025 Data</h1>
+  <div class="container">
+    <h1 id="main-title">May 2025 Data</h1>
 
-  <!-- Data Section -->
-  <div id="data-section" class="iframe-container">
-    <iframe 
-      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false"
-      height="600"
-      allowfullscreen>
-    </iframe>
-  </div>
+    <!-- Data Section (Visible by Default) -->
+    <div id="data-section" class="iframe-container">
+      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false"
+        height="600" allowfullscreen>
+      </iframe>
+    </div>
 
-  <!-- Form Section (hidden by default) -->
-  <div id="form-section" class="iframe-container">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfETKqWhKMq1essht5R7SbaXtX4ZFCaoxLO40YEe5GaAcvm4g/viewform?embedded=true" 
-      width="100%" height="1140" frameborder="0" marginheight="0" marginwidth="0">Loading…
-    </iframe>
+    <!-- Form Section (Hidden by Default) -->
+    <div id="form-section" class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfETKqWhKMq1essht5R7SbaXtX4ZFCaoxLO40YEe5GaAcvm4g/viewform?embedded=true"
+        width="100%" height="1140" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
   </div>
 
   <script>
+    // Function to toggle between sections
     function showSection(section) {
-      const data = document.getElementById('data-section');
-      const form = document.getElementById('form-section');
+      const dataSection = document.getElementById('data-section');
+      const formSection = document.getElementById('form-section');
       const title = document.getElementById('main-title');
 
       if (section === 'form') {
-        form.style.display = 'block';
-        data.style.display = 'none';
+        formSection.style.display = 'block';
+        dataSection.style.display = 'none';
         title.textContent = 'New Entry Form';
       } else if (section === 'data') {
-        data.style.display = 'block';
-        form.style.display = 'none';
+        dataSection.style.display = 'block';
+        formSection.style.display = 'none';
         title.textContent = 'May 2025 Data';
       } else {
-        // For 'Home', you can adjust as needed; here we show the data
-        data.style.display = 'block';
-        form.style.display = 'none';
+        // Show home content (this can be adjusted to show a welcome message)
+        dataSection.style.display = 'block';
+        formSection.style.display = 'none';
         title.textContent = 'May 2025 Data';
       }
     }
   </script>
 
 </body>
+
 </html>
