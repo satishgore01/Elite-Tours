@@ -22,21 +22,29 @@
       margin-bottom: 20px;
     }
 
+    /* Header Styling */
     header {
       background-color: #007BFF;
       color: white;
       padding: 15px 0;
-      text-align: center;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     header .site-name {
       font-size: 2rem;
       font-weight: bold;
+      text-align: center;
     }
 
     nav {
       margin-top: 10px;
+      text-align: center;
     }
 
     nav a {
@@ -58,7 +66,7 @@
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 100px auto 20px; /* Added margin-top for space under fixed header */
       padding: 20px;
       background-color: white;
       border-radius: 8px;
@@ -85,7 +93,6 @@
       display: none;
     }
 
-    /* Chart Section Styling */
     #chart-section {
       display: none;
     }
@@ -157,25 +164,4 @@
         formSection.style.display = 'block';
         dataSection.style.display = 'none';
         chartSection.style.display = 'none';
-        title.textContent = 'New Entry Form';
-      }
-      // Show data section
-      else if (section === 'data') {
-        dataSection.style.display = 'none';
-        formSection.style.display = 'none';
-        chartSection.style.display = 'block';
-        title.textContent = 'Data Chart';
-      }
-      // Show home content (this can be adjusted to show a welcome message)
-      else {
-        dataSection.style.display = 'block';
-        formSection.style.display = 'none';
-        chartSection.style.display = 'none';
-        title.textContent = 'May 2025 Data';
-      }
-    }
-  </script>
-
-</body>
-
-</html>
+        title.textContent = 'New Entry Form
