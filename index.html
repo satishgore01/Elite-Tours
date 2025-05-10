@@ -35,6 +35,7 @@
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -62,6 +63,10 @@
       display: block;
     }
 
+    #form-section {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       iframe {
         height: 400px !important;
@@ -74,22 +79,53 @@
   <header>
     <div class="site-name">Elite-Tours</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">New</a>
-      <a href="#">Data</a>
+      <a href="#" onclick="showSection('home')">Home</a>
+      <a href="#" onclick="showSection('form')">New</a>
+      <a href="#" onclick="showSection('data')">Data</a>
     </nav>
   </header>
 
-  <h1>May 2025 Data</h1>
+  <h1 id="main-title">May 2025 Data</h1>
 
-  <!-- Google Sheet Table -->
-  <div class="iframe-container">
+  <!-- Data Section -->
+  <div id="data-section" class="iframe-container">
     <iframe 
       src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false"
       height="600"
       allowfullscreen>
     </iframe>
   </div>
+
+  <!-- Form Section (hidden by default) -->
+  <div id="form-section" class="iframe-container">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfETKqWhKMq1essht5R7SbaXtX4ZFCaoxLO40YEe5GaAcvm4g/viewform?embedded=true" 
+      width="100%" height="1140" frameborder="0" marginheight="0" marginwidth="0">Loading…
+    </iframe>
+  </div>
+
+  <script>
+    function showSection(section) {
+      const data = document.getElementById('data-section');
+      const form = document.getElementById('form-section');
+      const title = document.getElementById('main-title');
+
+      if (section === 'form') {
+        form.style.display = 'block';
+        data.style.display = 'none';
+        title.textContent = 'New Entry Form';
+      } else if (section === 'data') {
+        data.style.display = 'block';
+        form.style.display = 'none';
+        title.textContent = 'May 2025 Data';
+      } else {
+        // For 'Home', you can adjust as needed; here we show the data
+        data.style.display = 'block';
+        form.style.display = 'none';
+        title.textContent = 'May 2025 Data';
+      }
+    }
+  </script>
 
 </body>
 </html>
