@@ -2,24 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Google Sheet Chart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Google Sheet Chart & Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .iframe-container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: 400px !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Live Chart from Google Sheets</h1>
-  <iframe 
-    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubchart?oid=1219643734&amp;format=interactive"
-    width="1600"
-    height="800"
-    frameborder="0"
-    scrolling="no">
-  </iframe>
 
-  <iframe 
-  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false" 
-  width="100%" 
-  height="600" 
-  frameborder="0" 
-  scrolling="yes">
-</iframe>
+  <h1>Live Google Sheet Chart & Table</h1>
+
+  <!-- Google Chart -->
+  <div class="iframe-container">
+    <iframe 
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubchart?oid=1219643734&amp;format=interactive"
+      height="600"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Google Sheet Table -->
+  <div class="iframe-container">
+    <iframe 
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZ72DN6U8q0AqgweJ3zAcgm4C5H6TKbRxRUJU1Vr6BXwgvPWUEaKt_yqxbHOcFkvpludfwxDdhsE1W/pubhtml?widget=true&amp;headers=false"
+      height="600"
+      allowfullscreen>
+    </iframe>
+  </div>
+
 </body>
 </html>
